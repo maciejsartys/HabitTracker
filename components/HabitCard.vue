@@ -1,11 +1,9 @@
 <template>
   <span>
     <li>
-      <el-progress type="circle" text-inside=false width="40" :percentage="habit.track.length / habit.weeklyTarget*100"></el-progress>
+      <HabitProgressbar :habit="habit" />
       <span>{{ habit.name }}</span>
-      <el-checkbox-group v-model="habit.track">
-        <el-checkbox v-for="weekday in weekdays" :key="weekday" :label="weekday"/></el-checkbox>
-      </el-checkbox-group>
+      <HabitCheckboxGroup :habit="habit" />
       <el-button @click="remove">
         <i class="el-icon-delete" ></i>
       </el-button>
@@ -14,10 +12,16 @@
 </template>
 
 <script>
+import HabitCheckboxGroup from './HabitCheckboxGroup'
+import HabitProgressbar from './HabitProgressbar'
+
 export default {
+  components: {
+    HabitCheckboxGroup,
+    HabitProgressbar
+  },
   props: {
-    habit: Object,
-    weekdays: Array
+    habit: Object
   },
   methods: {
     remove() {

@@ -2,7 +2,7 @@
   <div>
     <p>Your habits</p>
     <HabitCardsList>
-      <HabitCard v-for="habit in habits" :key="habit.id" :habit="habit" :weekdays="weekdays" @RemoveHabit="handleRemoveHabit" />
+      <HabitCard v-for="habit in habits" :key="habit.id" :habit="habit" @RemoveHabit="handleRemoveHabit" />
     </HabitCardsList>
     <SubmitHabitForm @submitHabitForm="handleHabitSubmit"/>
   </div>
@@ -72,7 +72,6 @@ export default {
               weeklyTarget: 5
             }
           ],
-          weekdays: ["Mon", "Tue", "Wed", "Thu", "Sat", "Sun"]
       }
   },
 }
